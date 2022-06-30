@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import '../TodoList.css';
+
 
 function TodoList(){
 
@@ -12,28 +14,44 @@ function TodoList(){
 
     const addTodo = (e) => {
         e.preventDefault();
+        setItems(items => [...items, {value: userInput, isMark: false}])
         setUserInput('')
-        setItems(items => [...items, userInput])
     }
 
-    const deleteTodo = (e) => {
-        e.preventDefault();
-        const array = items;
-        const index = array.indexOf(e.target.value)
-        console.log(index);
-        let newItems = array.splice(index, 1);
+    const deleteTodo = (item) => {
+        
+        console.log(item);
+        let newItems = items.filter((index) => (index !== item));
         setItems(newItems)
 
-        console.log("ppl",array);
-        console.log(newItems);
+    }
 
+    const checkItem = (item, key) => {
+        let newItems = items.map((item, index)=>{
+            if(key === index){
+                return {value: item.value, isMark: !item.isMark}
+            }else{
+                return item
+            }
+        })
+        console.log(newItems);
+        setItems(newItems)
     }
     
     const renderTodos = () => {
-        return items.map((item) => {
+        return items.map((item, key) => {
             return (
-                <div key={item}>
-                    {item} | <button onClick={deleteTodo}>X</button>
+                <div className="container" key={item}>
+                    <div className={item.isMark ? "itemTrue": "item"}>
+                        <p className={item.isMark ? "itemChecked": ""}>{item.value}</p>
+                        <button className="btn" onClick={() => deleteTodo(item)}>X</button>
+                    { item.isMark ? <input onClick={() => checkItem(item, key)} type="checkbox" id="scales" name="scales"checked /> : 
+                        <input onClick={() => checkItem(item, key)} type="checkbox" id="scales" name="scales" />
+                    
+                    }
+                    </div>
+
+
                 </div>
             )
         })

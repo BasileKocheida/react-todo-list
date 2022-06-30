@@ -1,0 +1,36 @@
+.container{
+    display: flex;
+    margin: 15px;
+    justify-content: center;
+}
+
+.item{
+    width: 30%;
+    background-color: #6d6dbf;
+    height: 100px;
+    text-align: center;
+    border-radius: 5px;
+    border: solid 1px black;
+}
+
+.itemTrue{
+    width: 30%;
+    background-color: #30ad2cbe;
+    height: 100px;
+    text-align: center;
+    border-radius: 5px;
+    border: solid 1px black;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+
+}
+
+.btn{
+    padding: 10px;
+    background-color: black;
+    color: white;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+}
+
+.itemChecked{
+    text-decoration: line-through;
+}
