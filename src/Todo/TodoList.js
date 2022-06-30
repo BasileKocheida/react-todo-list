@@ -18,10 +18,15 @@ function TodoList(){
 
     const deleteTodo = (e) => {
         e.preventDefault();
-        const index = items.indexOf(e.target.value);
-        console.log('ppl', index);
-        items.splice(index, 1);
-        setItems(items)
+        const array = items;
+        const index = array.indexOf(e.target.value)
+        console.log(index);
+        let newItems = array.splice(index, 1);
+        setItems(newItems)
+
+        console.log("ppl",array);
+        console.log(newItems);
+
     }
     
     const renderTodos = () => {
